@@ -1112,9 +1112,9 @@
 
 		keydown: function(e){
 			if (this.picker.is(':not(:visible)')){
+				this.show();
 				if (e.keyCode === 27) // allow escape to hide and re-show picker
-					this.show();
-				return;
+					return;
 			}
 			var dateChanged = false,
 				dir, newDate, newViewDate,
@@ -1201,11 +1201,11 @@
 						this.viewDate = this.dates.get(-1) || this.viewDate;
 						this.setValue();
 						this.fill();
-						if (this.picker.is(':visible')){
-							e.preventDefault();
-							if (this.o.autoclose)
-								this.hide();
-						}
+					}
+					if (this.picker.is(':visible')){
+						e.preventDefault();
+						if (this.o.autoclose)
+							this.hide();
 					}
 					break;
 				case 9: // tab
